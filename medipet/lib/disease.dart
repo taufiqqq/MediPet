@@ -204,7 +204,7 @@ class Disease extends StatelessWidget {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFFF8F00),
+                      backgroundColor: Color(0xFFFF8F00),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       ),
@@ -226,7 +226,7 @@ class Disease extends StatelessWidget {
                       // Add functionality for the Download button
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFFF8F00),
+                      backgroundColor: Color(0xFFFF8F00),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       ),

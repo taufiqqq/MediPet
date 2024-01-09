@@ -233,7 +233,7 @@ class _ScannerState extends State<Scanner> {
                           navigateToUploadPage();
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xFFFF8F00),
+                          backgroundColor: const Color(0xFFFF8F00),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
@@ -255,7 +255,7 @@ class _ScannerState extends State<Scanner> {
                           navigateToScanPage();
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xFFFF8F00),
+                          backgroundColor: Color(0xFFFF8F00),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),

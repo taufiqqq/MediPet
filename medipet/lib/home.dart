@@ -60,7 +60,7 @@ class Home extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFFF8F00),
+                  backgroundColor: Color(0xFFFF8F00),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
@@ -86,7 +86,7 @@ class Home extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFFF8F00),
+                  backgroundColor: Color(0xFFFF8F00),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
@@ -111,7 +111,7 @@ class Home extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFFF8F00),
+                  backgroundColor: Color(0xFFFF8F00),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),

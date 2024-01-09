@@ -18,9 +18,11 @@ class _ScannerState extends State<Scanner> {
   late CameraController controller;
   bool isCameraInitialized = false;
   bool isLoading = false;
-
+  bool _cameraOn = true;
+  
   @override
   void initState() {
+    _cameraOn = true;
     super.initState();
     initCamera();
   }
@@ -70,13 +72,16 @@ class _ScannerState extends State<Scanner> {
     // Show loading indicator
 
     // Simulate a loading delay
+    setState(() {
+      _cameraOn = false;
+    });
 
     // Continue with the actual navigation
     await pickImage();
     print('Navigating to Upload Page!');
 
     showLoading();
-    
+
     await Future.delayed(Duration(seconds: 2));
     // Hide loading indicator
     hideLoading();
@@ -85,11 +90,14 @@ class _ScannerState extends State<Scanner> {
       context,
       MaterialPageRoute(builder: (context) => Disease()),
     );
-    
   }
 
   void navigateToScanPage() async {
     // Show loading indicator
+    setState(() {
+      _cameraOn = false;
+    });
+
     showLoading();
 
     // Simulate a loading delay
@@ -146,7 +154,8 @@ class _ScannerState extends State<Scanner> {
       return Container(); // Or show a loading indicator
     }
 
-    return WillPopScope( onWillPop: () async {
+    return WillPopScope(
+      onWillPop: () async {
         // Dispose the camera controller when leaving the Scanner page
         controller.dispose();
         return true;
@@ -178,21 +187,22 @@ class _ScannerState extends State<Scanner> {
         body: Column(
           children: [
             SizedBox(height: 20),
-            Center(
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: MediaQuery.of(context).size.height * 0.5,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20.0),
-                  child: AspectRatio(
-                    aspectRatio: controller.value.aspectRatio,
-                    child: CameraPreview(controller),
+            if (_cameraOn)
+              Center(
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0),
+                    child: AspectRatio(
+                      aspectRatio: controller.value.aspectRatio,
+                      child: CameraPreview(controller),
+                    ),
                   ),
                 ),
               ),
-            ),
             SizedBox(height: 20),
-    // Add a column for optional text
+            // Add a column for optional text
             Container(
               width: MediaQuery.of(context).size.width * 0.9,
               child: Column(
@@ -207,11 +217,11 @@ class _ScannerState extends State<Scanner> {
                       ),
                     ),
                   ),
-    
+
                   SizedBox(height: 10),
-    
+
                   // TextInputField goes here
-    
+
                   TextFormField(
                     decoration: InputDecoration(
                       filled: true,

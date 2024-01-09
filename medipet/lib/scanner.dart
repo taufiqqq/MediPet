@@ -168,115 +168,117 @@ class _ScannerState extends State<Scanner> {
           ),
           context: context,
         ),
-        body: Column(
-          children: [
-            SizedBox(height: 20),
-            Center(
-              child: Container(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              Center(
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0),
+                    child: AspectRatio(
+                      aspectRatio: controller.value.aspectRatio,
+                      child: CameraPreview(controller),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+            // Add a column for optional text
+              Container(
                 width: MediaQuery.of(context).size.width * 0.9,
-                height: MediaQuery.of(context).size.height * 0.5,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20.0),
-                  child: AspectRatio(
-                    aspectRatio: controller.value.aspectRatio,
-                    child: CameraPreview(controller),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Optional:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+            
+                    SizedBox(height: 10),
+            
+                    // TextInputField goes here
+            
+                    TextFormField(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        hintText: 'A brief description...',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 30.0),
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        // Upload button
+                        ElevatedButton(
+                          onPressed: () {
+                            navigateToUploadPage();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFFFF8F00),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            fixedSize: Size(
+                              MediaQuery.of(context).size.width * 0.45,
+                              MediaQuery.of(context).size.width * 0.15,
+                            ),
+                          ),
+                          child: Text(
+                            'UPLOAD',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        // Scan button
+                        ElevatedButton(
+                          onPressed: () {
+                            navigateToScanPage();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFFFF8F00),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            fixedSize: Size(
+                              MediaQuery.of(context).size.width * 0.45,
+                              MediaQuery.of(context).size.width * 0.15,
+                            ),
+                          ),
+                          child: Text(
+                            'SCAN',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-    // Add a column for optional text
-            Container(
-              width: MediaQuery.of(context).size.width * 0.9,
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Optional:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-    
-                  SizedBox(height: 10),
-    
-                  // TextInputField goes here
-    
-                  TextFormField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      hintText: 'A brief description...',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 30.0),
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      // Upload button
-                      ElevatedButton(
-                        onPressed: () {
-                          navigateToUploadPage();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFFFF8F00),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          fixedSize: Size(
-                            MediaQuery.of(context).size.width * 0.45,
-                            MediaQuery.of(context).size.width * 0.15,
-                          ),
-                        ),
-                        child: Text(
-                          'UPLOAD',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      // Scan button
-                      ElevatedButton(
-                        onPressed: () {
-                          navigateToScanPage();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFFFF8F00),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          fixedSize: Size(
-                            MediaQuery.of(context).size.width * 0.45,
-                            MediaQuery.of(context).size.width * 0.15,
-                          ),
-                        ),
-                        child: Text(
-                          'SCAN',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -30,7 +30,7 @@ class SharedAppBar extends AppBar {
               Navigator.pop(context); // Close the menu
               // Check if already on the Home page
               if (ModalRoute.of(context)!.settings.name != '/home') {
-                Navigator.pushReplacementNamed(
+                Navigator.pushNamed(
                     context, '/home'); // Navigate to Home page
               }
             },
@@ -44,7 +44,7 @@ class SharedAppBar extends AppBar {
 
               // Check if already on the Disease Scanner page
               if (ModalRoute.of(context)!.settings.name != '/scanner') {
-                Navigator.pushReplacementNamed(
+                Navigator.pushNamed(
                     context, '/scanner'); // Navigate to Disease page
               }
             },
@@ -58,7 +58,7 @@ class SharedAppBar extends AppBar {
 
               // Check if already on the Chat PawPal page
               if (ModalRoute.of(context)!.settings.name != '/chat') {
-                Navigator.pushReplacementNamed(
+                Navigator.pushNamed(
                     context, '/chat'); // Navigate to Chat page
               }
             },
@@ -72,7 +72,7 @@ class SharedAppBar extends AppBar {
 
               // Check if already on the Nearby PetCare page
               if (ModalRoute.of(context)!.settings.name != '/petcare') {
-                Navigator.pushReplacementNamed(
+                Navigator.pushNamed(
                     context, '/petcare'); // Navigate to PetCare page
               }
             },

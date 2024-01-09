@@ -81,11 +81,7 @@ class _ScannerState extends State<Scanner> {
     // Hide loading indicator
     hideLoading();
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Disease()),
-    );
-    
+    Navigator.popAndPushNamed(context, '/disease');
   }
 
   void navigateToScanPage() async {
@@ -101,10 +97,7 @@ class _ScannerState extends State<Scanner> {
     // Hide loading indicator
     hideLoading();
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Disease()),
-    );
+    Navigator.popAndPushNamed(context, '/disease');
   }
 
   // Function to show the loading indicator

@@ -49,6 +49,13 @@ class _ScannerState extends State<Scanner> {
   }
 
   @override
+  void deactivate() {
+    // Dispose the camera controller when leaving the Scanner page
+    controller.dispose();
+    super.deactivate();
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 

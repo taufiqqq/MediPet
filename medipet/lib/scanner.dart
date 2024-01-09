@@ -14,10 +14,17 @@ class Scanner extends StatefulWidget {
 }
 
 class _ScannerState extends State<Scanner> {
-  late List<CameraDescription> _cameras;
   late CameraController controller;
   bool isCameraInitialized = false;
   bool isLoading = false;
+
+  late List<CameraDescription> _cameras;
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -42,30 +49,6 @@ class _ScannerState extends State<Scanner> {
     }
   }
 
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  void deactivate() {
-    // Dispose the camera controller when leaving the Scanner page
-    controller.dispose();
-    super.deactivate();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    // Reinitialize the camera controller when dependencies change
-    if (isCameraInitialized && controller.value.isInitialized) {
-      controller.dispose();
-      initCamera();
-    }
-  }
-
   void navigateToUploadPage() async {
     // Show loading indicator
 
@@ -76,7 +59,7 @@ class _ScannerState extends State<Scanner> {
     print('Navigating to Upload Page!');
 
     showLoading();
-    
+
     await Future.delayed(Duration(seconds: 2));
     // Hide loading indicator
     hideLoading();
@@ -139,7 +122,8 @@ class _ScannerState extends State<Scanner> {
       return Container(); // Or show a loading indicator
     }
 
-    return WillPopScope( onWillPop: () async {
+    return WillPopScope(
+      onWillPop: () async {
         // Dispose the camera controller when leaving the Scanner page
         controller.dispose();
         return true;
@@ -186,7 +170,7 @@ class _ScannerState extends State<Scanner> {
                 ),
               ),
               SizedBox(height: 20),
-            // Add a column for optional text
+              // Add a column for optional text
               Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 child: Column(
@@ -201,11 +185,11 @@ class _ScannerState extends State<Scanner> {
                         ),
                       ),
                     ),
-            
+        
                     SizedBox(height: 10),
-            
+        
                     // TextInputField goes here
-            
+        
                     TextFormField(
                       decoration: InputDecoration(
                         filled: true,
@@ -219,10 +203,8 @@ class _ScannerState extends State<Scanner> {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
-              Flexible(
-                flex:1,
-                child: Padding(
+              SizedBox(height: 100),
+               Padding(
                   padding: const EdgeInsets.only(bottom: 30.0),
                   child: Align(
                     alignment: Alignment.bottomCenter,
@@ -277,7 +259,6 @@ class _ScannerState extends State<Scanner> {
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),

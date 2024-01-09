@@ -220,7 +220,8 @@ class _ScannerState extends State<Scanner> {
                 ),
               ),
               SizedBox(height: 20),
-              Expanded(
+              Flexible(
+                flex:1,
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 30.0),
                   child: Align(

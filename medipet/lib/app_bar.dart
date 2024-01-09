@@ -20,22 +20,22 @@ class SharedAppBar extends AppBar {
   static void _showPopupMenu(BuildContext context) async {
     await showMenu(
       context: context,
-      position: RelativeRect.fromLTRB(1000.0, 50.0, 0.0, 0.0), // Adjust the position as needed
+      position: RelativeRect.fromLTRB(
+          1000.0, 50.0, 0.0, 0.0), // Adjust the position as needed
       items: [
         PopupMenuItem(
-  child: ListTile(
-    title: Text('Home'),
-    onTap: () {
-      Navigator.popUntil(context, (route) => route.isFirst);
-
-      // Check if already on the Home page
-      if (ModalRoute.of(context)!.settings.name != '/home') {
-        Navigator.pushReplacementNamed(context, '/home'); // Navigate to Home page
-      }
-    },
-  ),
-),
-
+          child: ListTile(
+            title: Text('Home'),
+            onTap: () {
+              Navigator.pop(context); // Close the menu
+              // Check if already on the Home page
+              if (ModalRoute.of(context)!.settings.name != '/home') {
+                Navigator.pushReplacementNamed(
+                    context, '/home'); // Navigate to Home page
+              }
+            },
+          ),
+        ),
         PopupMenuItem(
           child: ListTile(
             title: Text('Disease Scanner'),
@@ -44,7 +44,8 @@ class SharedAppBar extends AppBar {
 
               // Check if already on the Disease Scanner page
               if (ModalRoute.of(context)!.settings.name != '/scanner') {
-                Navigator.pushReplacementNamed(context, '/scanner'); // Navigate to Disease page
+                Navigator.pushReplacementNamed(
+                    context, '/scanner'); // Navigate to Disease page
               }
             },
           ),
@@ -57,7 +58,8 @@ class SharedAppBar extends AppBar {
 
               // Check if already on the Chat PawPal page
               if (ModalRoute.of(context)!.settings.name != '/chat') {
-                Navigator.pushReplacementNamed(context, '/chat'); // Navigate to Chat page
+                Navigator.pushReplacementNamed(
+                    context, '/chat'); // Navigate to Chat page
               }
             },
           ),
@@ -70,7 +72,8 @@ class SharedAppBar extends AppBar {
 
               // Check if already on the Nearby PetCare page
               if (ModalRoute.of(context)!.settings.name != '/petcare') {
-                Navigator.pushReplacementNamed(context, '/petcare'); // Navigate to PetCare page
+                Navigator.pushReplacementNamed(
+                    context, '/petcare'); // Navigate to PetCare page
               }
             },
           ),

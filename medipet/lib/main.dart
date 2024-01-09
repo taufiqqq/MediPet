@@ -22,8 +22,10 @@ class MyApp extends StatelessWidget {
       },
       debugShowCheckedModeBanner: false, // Remove the debug banner
       theme: ThemeData(
+        colorScheme: ColorScheme.light(),
         scaffoldBackgroundColor: Color(0xFFF9E8D9),
         primaryColor: Color(0xFFFF8F00), // Set primary color
+        useMaterial3: false,
       ),
     );
   }

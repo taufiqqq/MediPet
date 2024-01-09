@@ -27,7 +27,7 @@ class _ScannerState extends State<Scanner> {
 
   Future<void> initCamera() async {
     _cameras = await availableCameras();
-    controller = CameraController(_cameras[0], ResolutionPreset.max);
+    controller = CameraController(_cameras[1], ResolutionPreset.max);
 
     try {
       await controller.initialize();
